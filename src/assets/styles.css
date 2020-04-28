@@ -23,13 +23,11 @@
 }
 
 .header-amazon{
-    width:350px;
+    width:max-content;
     display:flex;
     margin:0 auto;
     height: 150px;
-    align-items: center;
-
-   
+    align-items: center;   
 }
 
 .header-amazon h2{

@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import "./assets/styles.css"
-import {Table,Container} from 'react-bootstrap';
+import {Table,Container,Button} from 'react-bootstrap';
 import axios from 'axios'
 import Example from './components/EditInstance';
 import {pencil} from 'react-icons-kit/fa/pencil'
@@ -28,12 +28,19 @@ const App=()=>{
     setEditModal(true);
   }
 
+  const handleSubmit=()=>{
+    axios.post(`http://localhost:8080/api/create`).then(res=>{
+      console.log(res);            
+      setChanged(!changed);
+      setEditModal(false);
+  })
+  }
+
   return (
     <>
     <Nav/>
     <div className="header-amazon">
       <img src={logo} height={100}/>
-      <h2>AWS Instances</h2>
     </div>
     <Container>
       <Table striped bordered hover>
@@ -49,7 +56,6 @@ const App=()=>{
       </thead>
       <tbody>
         {instances.map(instance=>{
-        
           return(
             <tr>
               <td>{instance.instanceId}</td>
@@ -64,6 +70,7 @@ const App=()=>{
          
       </tbody>
     </Table>
+    <Button variant="primary" onClick={()=>handleSubmit()}>Criar Instancia</Button>
     </Container>
 
       <Example edit={edit} setEditModal={setEditModal} instanceId={instan} setChanged={setChanged} changed={changed}/>
