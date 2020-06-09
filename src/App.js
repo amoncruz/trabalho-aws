@@ -16,7 +16,7 @@ const App=()=>{
   const [changed,setChanged] = useState(false);
 
   useEffect(()=>{
-    axios.get("http://localhost:8080/api/instances").then(res=>{
+    axios.get("http://ec2-3-135-227-196.us-east-2.compute.amazonaws.com:8080/api/instances").then(res=>{
       setInstances(res.data);
     })
 
@@ -29,7 +29,7 @@ const App=()=>{
   }
 
   const handleSubmit=()=>{
-    axios.post(`http://localhost:8080/api/create`).then(res=>{
+    axios.post(`http://ec2-3-135-227-196.us-east-2.compute.amazonaws.com:8080/api/create`).then(res=>{
       console.log(res);            
       setChanged(!changed);
       setEditModal(false);

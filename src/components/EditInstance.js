@@ -13,7 +13,7 @@ function Example({edit,setEditModal,instanceId,setChanged,changed}) {
     const handleSubmit=()=>{
         if(state){
             if(instanceId!==undefined){
-                axios.post(`http://localhost:8080/api/${state}/${instanceId}`).then(res=>{
+                axios.post(`http://ec2-3-135-227-196.us-east-2.compute.amazonaws.com:8080/api/${state}/${instanceId}`).then(res=>{
                   
                     setChanged(!changed);
                     setEditModal(false);
